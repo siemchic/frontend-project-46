@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import * as path from 'path';
-import * as fs from 'fs';
 import readthefile from './readTheFile.js';
 
 const program = new Command();
