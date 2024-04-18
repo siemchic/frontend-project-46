@@ -6,4 +6,6 @@ lint:
 	npx eslint bin/**/*
 lint_fix:
 	npx eslint . --fix
+report:
+	./gradlew jacocoTestReport
 	
