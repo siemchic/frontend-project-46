@@ -19,6 +19,7 @@ const getDiff = (file1, file2) => {
     }
     if (file1[key] === file2[key]) {
       result.push(`    ${key} : ${file2[key]}`);
+      continue;
     } else {
       result.push(`  - ${key} : ${file1[key]}`);
       result.push(`  + ${key} : ${file2[key]}`);
