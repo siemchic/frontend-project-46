@@ -9,23 +9,23 @@ const getDiff = (file1, file2) => {
   for (const key of keyses) {
     const haskey1 = Object.hasOwn(file1, key);
     const haskey2 = Object.hasOwn(file2, key);
-    if (haskey1 && !haskey2) {
+    if (_.isObject(file1[key]) && _.isObject(file2[key])) {
+      result.push(`${key} ${getDiff(file1[key], file2[key])}`);
+    } else if (_.isObject(file1[key])) {
       result.push(`  - ${key} : ${file1[key]}`);
-      continue;
-    }
-    if (!haskey1 && haskey2) {
+    } else if (_.isObject(file2[key])) {
       result.push(`  + ${key} : ${file2[key]}`);
-      continue;
-    }
-    if (file1[key] === file2[key]) {
+    } else if (haskey1 && !haskey2) {
+      result.push(`  - ${key} : ${file1[key]}`);
+    } else if (!haskey1 && haskey2) {
+      result.push(`  + ${key} : ${file2[key]}`);
+    } else if (file1[key] === file2[key]) {
       result.push(`    ${key} : ${file2[key]}`);
-      continue;
     } else {
       result.push(`  - ${key} : ${file1[key]}`);
       result.push(`  + ${key} : ${file2[key]}`);
     }
   }
-  console.log(result);
   return `{\n${result.join('\n')}\n}`;
 };
 export default getDiff;

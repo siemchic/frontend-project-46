@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import readthefile from './readTheFile.js';
+import parser from './parser.js';
 import getDiff from './getDiff.js';
 
 const program = new Command();
@@ -13,7 +13,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2) => {
-    const files = readthefile(filepath1, filepath2);
+    const files = parser(filepath1, filepath2);
     const diff = getDiff(files.fileContent, files.fileContent2);
     console.log(diff);
   });
