@@ -25,6 +25,7 @@ const getDiff = (file1, file2) => {
       result.push(`  + ${key} : ${file2[key]}`);
     }
   }
+  console.log(result);
   return `{\n${result.join('\n')}\n}`;
 };
 export default getDiff;
