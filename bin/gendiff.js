@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 import parser from './parser.js';
 import getDiff from './getDiff.js';
+import style from './style.js';
 
 const program = new Command();
 
@@ -14,8 +15,10 @@ program
   .argument('<filepath2>')
   .action((filepath1, filepath2) => {
     const files = parser(filepath1, filepath2);
+    console.log(files);
     const diff = getDiff(files.fileContent, files.fileContent2);
-    console.log(diff);
+    const styleTree = style(diff);
+    console.log(styleTree);
   });
 
 program.parse();
