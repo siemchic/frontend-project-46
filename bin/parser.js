@@ -19,6 +19,6 @@ const parser = (filepath1, filepath2) => {
   if (format1 === '.yml' && format2 === '.yml') {
     return { fileContent: yaml.load(fileContent), fileContent2: yaml.load(fileContent2) };
   }
-  throw Error(`Unknown format: ${format1}!`);
+  return 'Unknow format';
 };
 export default parser;
