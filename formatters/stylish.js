@@ -1,4 +1,4 @@
-const spacesCount = 3;
+const spacesCount = 4;
 const getIndent = (depth) => ' '.repeat(spacesCount * depth - 2);
 
 const style = (data) => {
