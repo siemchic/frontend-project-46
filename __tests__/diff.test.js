@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import getDiff from '../bin/getDiff.js';
 import parser from '../bin/parser.js';
+import style from '../formatters/stylish.js';
+import plain from '../formatters/plain.js';
 
 const JSON1 = 'bin/file1.json';
 const JSON2 = 'bin/file2.json';
@@ -9,11 +11,18 @@ const YAML1 = 'bin/file1.yaml';
 const YAML2 = 'bin/file1.yaml';
 const filesYAML = parser(YAML1, YAML2);
 
-const refGetDiff = fs.readFileSync('__fixtures__/referenceGetDiff.js', 'utf-8');
+const diffJSON = getDiff(filesJSON.fileContent, filesJSON.fileContent2);
+const diffYAML = getDiff(filesYAML.fileContent, filesYAML.fileContent2);
 
-test('expected GetDiffJSON', () => {
-  expect(getDiff(filesJSON.fileContent, filesJSON.fileContent2)).toBe(refGetDiff);
+const fileStylish = fs.readFileSync('__fixtures__/referenceGetDiff.js', 'utf-8');
+const filePlain = fs.readFileSync('__fixtures__/referencePlain.js', 'utf-8');
+
+test('expected stylish', () => {
+  expect(style(diffJSON)).toBe(fileStylish);
 });
-test('expected GetDiffYAML', () => {
-  expect(getDiff(filesYAML.fileContent, filesYAML.fileContent2)).toBe(refGetDiff);
+test('expected plain', () => {
+  expect(plain(diffJSON)).toBe(filePlain);
+});
+test('false format', () => {
+  expect(parser(JSON1, YAML1)).toBe(false);
 });
