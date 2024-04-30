@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import parser from './parser.js';
-import getDiff from './getDiff.js';
-import format from '../formatters/index.js';
+import genDiff from '../index.js';
 
 const program = new Command();
 
@@ -14,10 +12,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2) => {
-    const files = parser(filepath1, filepath2);
-    const diff = getDiff(files.fileContent, files.fileContent2);
-    const formatedResult = format(diff, program.opts().format);
-    console.log(formatedResult);
+    console.log(genDiff(filepath1, filepath2, program.opts().format));
   });
 
 program.parse();

@@ -2,7 +2,7 @@ import plain from './plain.js';
 import style from './stylish.js';
 import json from './JSON.js';
 
-const format = (diff, formatName) => {
+const formatData = (diff, formatName) => {
   if (formatName === 'plain') {
     return plain(diff);
   }
@@ -14,4 +14,4 @@ const format = (diff, formatName) => {
   }
   return 'bad result';
 };
-export default format;
+export default formatData;
