@@ -13,12 +13,12 @@ const parser = (filepath1, filepath2) => {
   if (format1 === '.json' && format2 === '.json') {
     return { fileContent: JSON.parse(fileContent), fileContent2: JSON.parse(fileContent2) };
   }
-  if (format1 === '.yaml' && format2 === '.yaml') {
+  if ((format1 === '.yaml' && format2 === '.yaml') || (format1 === '.yml' && format2 === '.yml')) {
     return { fileContent: yaml.load(fileContent), fileContent2: yaml.load(fileContent2) };
   }
-  if (format1 === '.yml' && format2 === '.yml') {
-    return { fileContent: yaml.load(fileContent), fileContent2: yaml.load(fileContent2) };
-  }
+  //if (format1 === '.yml' && format2 === '.yml') {
+  //  return { fileContent: yaml.load(fileContent), fileContent2: yaml.load(fileContent2) };
+  //}
   return 'Unknow format';
 };
 export default parser;

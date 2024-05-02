@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import _ from 'lodash';
 
 const getDiff = (file1, file2) => {
