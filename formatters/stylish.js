@@ -32,7 +32,7 @@ const style = (data) => {
     }
     if (nodeType === 'object') {
       const arr = node.children.flatMap((child) => iter(child, depth + 1));
-      return `${getIndent(depth)}  ${name}: {\n${arr.join('\n')}\n${getIndent(depth)}}`;
+      return `${getIndent(depth)}  ${name}: {\n${arr.join('\n')}\n${getIndent(depth)}  }`;
     }
     return `${getIndent(depth)}  ${name}: ${node.value}`;
   };
