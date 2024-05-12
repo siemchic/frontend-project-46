@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const spacesCount = 4;
 const getIndent = (depth) => ' '.repeat(spacesCount * depth - 2);
 
