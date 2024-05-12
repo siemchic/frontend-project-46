@@ -4,7 +4,7 @@ const isAnObject = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
-  return `'${value}'`;
+  return `${value}`;
 };
 
 const plain = (data) => {
