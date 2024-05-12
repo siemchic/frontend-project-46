@@ -9,7 +9,7 @@ const objectObject = (data, depth) => {
   }
   if (typeof data === 'object') {
     const arrar = Object.entries(data).map(([key, value]) => `${' '.repeat(spacesCount * depth + 2)}  ${key}: ${objectObject(value, depth + 1)}`);
-    return `{\n${arrar.join('\n')}\n${' '.repeat(spacesCount * depth)} }`;
+    return `{\n${arrar.join('\n')}\n${' '.repeat(spacesCount * depth)}}`;
   }
   return `${data}`;
 };
