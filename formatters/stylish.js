@@ -41,5 +41,3 @@ const style = (data) => {
   return resultString;
 };
 export default style;
-
-// доп функция на проверку обьекта
