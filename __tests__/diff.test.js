@@ -13,9 +13,9 @@ const YAML1 = '__fixtures__/file1.yaml';
 
 const diffJSON = getDiff(filesJSON.fileContent, filesJSON.fileContent2);
 
-const fileStylish = fs.readFileSync('__fixtures__/referenceGetDiff.js', 'utf-8');
-const filePlain = fs.readFileSync('__fixtures__/referencePlain.js', 'utf-8');
-const fileJSON = fs.readFileSync('__fixtures__/referenceJSON.js', 'utf-8');
+const fileStylish = fs.readFileSync('__fixtures__/referStyle', 'utf-8');
+const filePlain = fs.readFileSync('__fixtures__/referPlain', 'utf-8');
+const fileJSON = fs.readFileSync('__fixtures__/referJSON', 'utf-8');
 
 test('expected stylish', () => {
   expect(style(diffJSON)).toBe(fileStylish);
